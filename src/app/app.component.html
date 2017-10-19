@@ -8,17 +8,17 @@
 
 <hr>
 
-<input type="text" [(ngModel)]="postTitleInput" (keyup.enter)="addPost()">
+<input type="text" placeholder="post title" [(ngModel)]="postTitleInput" (keyup.enter)="addPost()">
 
 <ul>
   <li *ngFor="let post of posts | async; trackBy: trackById">
     {{ post | json }}
     <button (click)="removePost(post)">delete post</button>
     <br>
-    <input type="text" (keyup.enter)="addComment(post, commentInput)" #commentInput>
+    <input type="text" placeholder="comment" (keyup.enter)="addComment(post, commentInput)" #commentInput>
     <ul>
-      <li *ngFor="let comment of post.comments">
-        {{ comment }}
+      <li *ngFor="let comment of commentsMap.get(post.id) | async; trackBy: trackById">
+        {{ comment | json }}
         <button (click)="removeComment(post, comment)">delete comment</button>
       </li>
     </ul>

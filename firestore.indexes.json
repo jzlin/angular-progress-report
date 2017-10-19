@@ -10,5 +10,13 @@
   //     ]
   //   }
   // ]
-  "indexes": []
+  "indexes": [
+    {
+      "collectionId": "comments",
+      "fields": [
+        { "fieldPath": "postId", "mode": "ASCENDING" },
+        { "fieldPath": "createOn", "mode": "ASCENDING" }
+      ]
+    }
+  ]
 }
