@@ -13,9 +13,7 @@ export class AppComponent {
   constructor(
     public afAuth: AngularFireAuth,
     private userSvc: UserService
-  ) {
-    console.log(afAuth);
-  }
+  ) { }
 
   login() {
     this.userSvc.login();

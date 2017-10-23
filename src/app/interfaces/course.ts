@@ -1,19 +1,18 @@
 export interface Course {
-  $key: string;
+  id?: string;
   courseNo: string;
+  name: string;
   description: string;
-  startOn: Date;
-  endOn: Date;
+  startOn: string;
+  endOn: string;
   address: string;
-  location: Geolocation;
   teacher: Array<{
     userId: string;
     isHost: boolean;
   }>;
   applyLink: string;
   status: number; // (0: 草案, 1: 公開, 2: 封存)
-  createOn: Date;
-  createBy: string;
-  lastUpdateOn: Date;
-  lastUpdateBy: string;
+  createBy?: string;
+  createOn?: string;
+  lastUpdateOn?: string;
 }

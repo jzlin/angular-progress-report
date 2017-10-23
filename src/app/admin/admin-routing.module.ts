@@ -1,7 +1,13 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-const routes: Routes = [];
+import { CourseComponent } from './course/course.component';
+
+const routes: Routes = [
+  { path: '', redirectTo: 'courses', pathMatch: 'full' },
+  { path: 'courses', component: CourseComponent },
+  { path: '**', redirectTo: 'courses' }
+];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

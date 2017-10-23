@@ -5,6 +5,11 @@ service cloud.firestore {
       allow create: if request.auth != null;
       allow update, delete: if resource.data.uid == request.auth.uid;
     }
+    match /courses/{courseKey} {
+      allow read;
+      allow create: if request.auth != null;
+      allow update, delete: if resource.data.createBy == request.auth.uid;
+    }
     match /posts/{postId} {
       allow read;
       allow create: if request.auth != null;
