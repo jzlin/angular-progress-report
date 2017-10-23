@@ -1,0 +1,16 @@
+.mdl-layout-title {
+  color: #fff;
+  text-decoration: none;
+}
+
+.mdl-layout__drawer > .mdl-layout-title {
+  color: #424242;
+}
+
+.mdl-navigation__link {
+  line-height: normal;
+}
+
+.mdl-chip__contact {
+  object-fit: cover;
+}

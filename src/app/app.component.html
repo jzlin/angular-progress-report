@@ -1,28 +1,44 @@
-<div>
-  <img [src]="afAuth.auth.currentUser?.photoURL">
-  <a>{{ afAuth.auth.currentUser?.displayName }}</a>
+<!-- Always shows a header, even in smaller screens. -->
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+  <header class="mdl-layout__header">
+    <div class="mdl-layout__header-row">
+      <!-- Title -->
+      <a class="mdl-layout-title" routerLink="/">Progress Report</a>
+      <!-- Add spacer, to align navigation to the right -->
+      <div class="mdl-layout-spacer"></div>
+      <!-- Navigation. We hide it in small screens. -->
+      <nav class="mdl-navigation mdl-layout--large-screen-only">
+        <a class="mdl-navigation__link" routerLink="/admin">admin</a>
+        <a class="mdl-navigation__link" *ngIf="afAuth.authState | async">
+          <!-- Contact Chip -->
+          <span class="mdl-chip mdl-chip--contact">
+            <img class="mdl-chip__contact" [src]="afAuth.auth.currentUser?.photoURL">
+            <span class="mdl-chip__text">{{ afAuth.auth.currentUser?.displayName }}</span>
+          </span>
+        </a>
+        <a class="mdl-navigation__link" *ngIf="!(afAuth.authState | async)" (click)="login()">Login</a>
+        <a class="mdl-navigation__link" *ngIf="afAuth.authState | async" (click)="logout()">Logout</a>
+      </nav>
+    </div>
+  </header>
+  <div class="mdl-layout__drawer">
+    <a class="mdl-layout-title" routerLink="/">Progress Report</a>
+    <nav class="mdl-navigation">
+      <a class="mdl-navigation__link" *ngIf="afAuth.authState | async">
+        <!-- Contact Chip -->
+        <span class="mdl-chip mdl-chip--contact">
+          <img class="mdl-chip__contact" [src]="afAuth.auth.currentUser?.photoURL">
+          <span class="mdl-chip__text">{{ afAuth.auth.currentUser?.displayName }}</span>
+        </span>
+      </a>
+      <a class="mdl-navigation__link" routerLink="/admin">admin</a>
+      <a class="mdl-navigation__link" *ngIf="!(afAuth.authState | async)" (click)="login()">Login</a>
+      <a class="mdl-navigation__link" *ngIf="afAuth.authState | async" (click)="logout()">Logout</a>
+    </nav>
+  </div>
+  <main class="mdl-layout__content">
+    <div class="page-content">
+      <router-outlet></router-outlet>
+    </div>
+  </main>
 </div>
-
-<button *ngIf="!afAuth.auth.currentUser" (click)="login()">login with facebook</button>
-<button *ngIf="afAuth.auth.currentUser" (click)="logout()">logout</button>
-
-<hr>
-
-<input type="text" placeholder="post title" [(ngModel)]="postTitleInput" (keyup.enter)="addPost()">
-
-<ul>
-  <li *ngFor="let post of posts | async; trackBy: trackById">
-    {{ post | json }}
-    <button (click)="removePost(post)">delete post</button>
-    <br>
-    <input type="text" placeholder="comment" (keyup.enter)="addComment(post, commentInput)" #commentInput>
-    <ul>
-      <li *ngFor="let comment of commentsMap.get(post.id) | async; trackBy: trackById">
-        {{ comment | json }}
-        <button (click)="removeComment(post, comment)">delete comment</button>
-      </li>
-    </ul>
-  </li>
-</ul>
-
-<router-outlet></router-outlet>

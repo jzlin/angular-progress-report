@@ -1,5 +1,10 @@
 service cloud.firestore {
   match /databases/{database}/documents {
+    match /users/{userKey} {
+      allow read;
+      allow create: if request.auth != null;
+      allow update, delete: if resource.data.uid == request.auth.uid;
+    }
     match /posts/{postId} {
       allow read;
       allow create: if request.auth != null;
