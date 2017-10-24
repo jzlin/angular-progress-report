@@ -1,0 +1,47 @@
+<form #courseForm="ngForm" (ngSubmit)="editCourse(courseForm)" appMdl *ngIf="courseEditModel">
+    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+      <input class="mdl-textfield__input" type="text" id="courseNo" name="courseNo" [(ngModel)]="courseEditModel.courseNo">
+      <label class="mdl-textfield__label" for="courseNo">courseNo</label>
+    </div>
+    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+      <input class="mdl-textfield__input" type="text" id="name" name="name" required [(ngModel)]="courseEditModel.name">
+      <label class="mdl-textfield__label" for="name">name</label>
+    </div>
+    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+      <input class="mdl-textfield__input" type="text" id="description" name="description" [(ngModel)]="courseEditModel.description">
+      <label class="mdl-textfield__label" for="description">description</label>
+    </div>
+    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+      <input class="mdl-textfield__input" type="datetime" id="startOn" name="startOn" [(ngModel)]="courseEditModel.startOn">
+      <label class="mdl-textfield__label" for="startOn">startOn</label>
+    </div>
+    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+      <input class="mdl-textfield__input" type="datetime" id="endOn" name="endOn" [(ngModel)]="courseEditModel.endOn">
+      <label class="mdl-textfield__label" for="endOn">endOn</label>
+    </div>
+    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+      <input class="mdl-textfield__input" type="text" id="address" name="address" [(ngModel)]="courseEditModel.address">
+      <label class="mdl-textfield__label" for="address">address</label>
+    </div>
+    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+      <input class="mdl-textfield__input" type="text" id="applyLink" name="applyLink" [(ngModel)]="courseEditModel.applyLink">
+      <label class="mdl-textfield__label" for="applyLink">applyLink</label>
+    </div>
+    <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="status-1">
+      <input type="radio" id="status-1" class="mdl-radio__button" name="status" [value]="0" [(ngModel)]="courseEditModel.status">
+      <span class="mdl-radio__label">draft</span>
+    </label>
+    <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="status-2">
+      <input type="radio" id="status-2" class="mdl-radio__button" name="status" [value]="1" [(ngModel)]="courseEditModel.status">
+      <span class="mdl-radio__label">public</span>
+    </label>
+    <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="status-3">
+      <input type="radio" id="status-3" class="mdl-radio__button" name="status" [value]="2" [(ngModel)]="courseEditModel.status">
+      <span class="mdl-radio__label">archived</span>
+    </label>
+
+    <hr>
+
+    <a class="mdl-button mdl-js-button mdl-button--raised" routerLink="admin/courses">Back</a>
+    <button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" [disabled]="!courseForm.form.valid">Update</button>
+  </form>

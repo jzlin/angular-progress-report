@@ -19,6 +19,7 @@
       <td class="mdl-data-table__cell--non-numeric">{{ course.startOn }}</td>
       <td class="mdl-data-table__cell--non-numeric">{{ course.endOn }}</td>
       <td>
+        <a class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" [routerLink]="['edit', course.id]">Edit</a>
         <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent" (click)="removeCourse(course)">Delete</button>
       </td>
     </tr>

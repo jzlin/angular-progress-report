@@ -6,6 +6,7 @@ import { SharedModule } from '../shared/shared.module';
 import { AdminRoutingModule } from './admin-routing.module';
 import { CourseComponent } from './course/course.component';
 import { CourseAddComponent } from './course-add/course-add.component';
+import { CourseEditComponent } from './course-edit/course-edit.component';
 
 @NgModule({
   imports: [
@@ -14,6 +15,6 @@ import { CourseAddComponent } from './course-add/course-add.component';
     SharedModule,
     AdminRoutingModule
   ],
-  declarations: [CourseComponent, CourseAddComponent]
+  declarations: [CourseComponent, CourseAddComponent, CourseEditComponent]
 })
 export class AdminModule { }
