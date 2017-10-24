@@ -14,3 +14,7 @@
 .mdl-chip__contact {
   object-fit: cover;
 }
+
+.mdl-layout__content {
+  padding: 20px;
+}
