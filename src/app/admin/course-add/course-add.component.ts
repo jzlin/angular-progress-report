@@ -47,7 +47,7 @@ export class CourseAddComponent implements OnInit {
     const now = new Date().toJSON();
     this.courseAddModel = {
       courseNo: '',
-      name: '123',
+      name: '',
       description: '',
       startOn: now,
       endOn: now,

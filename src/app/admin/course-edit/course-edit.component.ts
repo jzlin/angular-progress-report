@@ -52,7 +52,6 @@ export class CourseEditComponent implements OnInit {
         return { id, ...data } as Course;
       })
       .subscribe(data => {
-        console.log(data);
         this.courseEditModel = data;
       });
   }
