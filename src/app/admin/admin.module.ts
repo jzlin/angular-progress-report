@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 
 import { AdminRoutingModule } from './admin-routing.module';
 import { CourseComponent } from './course/course.component';
+import { CourseAddComponent } from './course-add/course-add.component';
 
 @NgModule({
   imports: [
@@ -11,6 +12,6 @@ import { CourseComponent } from './course/course.component';
     FormsModule,
     AdminRoutingModule
   ],
-  declarations: [CourseComponent]
+  declarations: [CourseComponent, CourseAddComponent]
 })
 export class AdminModule { }

@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
-import { AngularFireAuth } from 'angularfire2/auth';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
 import { Course } from '../../interfaces/course';
@@ -16,32 +15,12 @@ export class CourseComponent implements OnInit {
 
   private coursesCollection: AngularFirestoreCollection<Course>;
 
-  courseAddModel: Course;
-
   constructor(
-    private afs: AngularFirestore,
-    private afAuth: AngularFireAuth
+    private afs: AngularFirestore
   ) { }
 
   ngOnInit() {
-    this.initCourseAddModel();
     this.initCoursesCollection();
-  }
-
-  addCourse(courseForm) {
-    const now = new Date().toJSON();
-    const newCourse: Course = courseForm.value;
-    newCourse.createOn = now;
-    newCourse.lastUpdateOn = now;
-    newCourse.createBy = this.afAuth.auth.currentUser && this.afAuth.auth.currentUser.uid;
-
-    this.coursesCollection.add(newCourse)
-      .then(course => {
-        this.initCourseAddModel();
-      })
-      .catch(error => {
-        console.error(`${error.name}: ${error.code}`);
-      });
   }
 
   removeCourse(course: Course) {
@@ -49,21 +28,6 @@ export class CourseComponent implements OnInit {
       .catch(error => {
         console.error(`${error.name}: ${error.code}`);
       });
-  }
-
-  private initCourseAddModel() {
-    const now = new Date().toJSON();
-    this.courseAddModel = {
-      courseNo: '',
-      name: '123',
-      description: '',
-      startOn: now,
-      endOn: now,
-      address: '',
-      teacher: [],
-      applyLink: '',
-      status: 0
-    };
   }
 
   private initCoursesCollection() {
